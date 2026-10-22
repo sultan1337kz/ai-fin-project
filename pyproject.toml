@@ -1,0 +1,37 @@
+[project]
+name = "recon"
+version = "0.1.0"
+description = "AI agent for payment reconciliation exceptions (synthetic data only)"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "mypy>=1.13",
+    "pytest>=8.3",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.18,<0.13"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# E/F: pycodestyle + pyflakes basics; I: import sorting; B: bugbear (common bug patterns);
+# UP: modern syntax for py312; SIM: simplifications; RUF: ruff-specific checks.
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+# Relax per module (via [[tool.mypy.overrides]]) when a third-party lib ships without types,
+# rather than weakening checks globally.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-ra", "--strict-markers"]
