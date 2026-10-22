@@ -10,7 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: astral-sh/setup-uv@v10
+      # setup-uv publishes only full semver tags (no floating major tag), so pin exactly.
+      - uses: astral-sh/setup-uv@v10.3.1
         with:
           enable-cache: true
 
