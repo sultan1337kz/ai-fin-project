@@ -1,7 +1,8 @@
 services:
   postgres:
     # Pinned major version: 18 moved the data directory layout, so upgrades must be deliberate.
-    image: postgres:17
+    # Fully qualified name so Podman resolves it without a short-name registry prompt.
+    image: docker.io/library/postgres:17
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
